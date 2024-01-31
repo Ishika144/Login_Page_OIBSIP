@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login and Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .error-message {
+            color: #ff0000;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+            Login or Register
+        </div>
+        <div class="card-body">
+            <ul class="nav nav-tabs" id="loginRegisterTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="loginTab" data-toggle="tab" href="#login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="registerTab" data-toggle="tab" href="#register">Register</a>
+                </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+                <div class="tab-pane fade show active" id="login">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginUsername">Username:</label>
+                            <input type="text" class="form-control" id="loginUsername" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password:</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block" onclick="performLogin()">Login</button>
+                        <p id="loginError" class="error-message text-center"></p>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="register">
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="registerUsername">New Username:</label>
+                            <input type="text" class="form-control" id="registerUsername" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">New Password:</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <button type="button" class="btn btn-success btn-block" onclick="performRegistration()">Register</button>
+                        <p id="registerError" class="error-message text-center"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- Custom JavaScript -->
+<script>
+    function performLogin() {
+        var username = document.getElementById("loginUsername").value;
+        var password = document.getElementById("loginPassword").value;
+        var errorElement = document.getElementById("loginError");
+
+        // Simulating a basic login logic
+        if (username === "demo" && password === "password") {
+            // Redirect to a new page upon successful login
+            window.location.href = "https://en.wikipedia.org/wiki/KL_Rahul";
+        } else {
+            errorElement.textContent = "Invalid username or password. Please try again.";
+        }
+    }
+
+    function performRegistration() {
+        var newUsername = document.getElementById("registerUsername").value;
+        var newPassword = document.getElementById("registerPassword").value;
+        var errorElement = document.getElementById("registerError");
+
+        // Simulating a basic registration logic
+        if (newUsername.trim() === "" || newPassword.trim() === "") {
+            errorElement.textContent = "Please enter both username and password.";
+        } else {
+            errorElement.textContent = "Registration successful!";
+        }
+    }
+
+    // Activate Bootstrap tabs
+    $('#loginRegisterTabs a').on('click', function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+
+    // Change background image after 10 seconds
+   // Change background image after 10 seconds
+setTimeout(function () {
+    document.body.style.backgroundImage = "url('ishika.jpg')";
+}, 10000);
+
+</script>
+
+</body>
+</html>
